@@ -19,13 +19,16 @@ namespace Application
 
             IDbConnection conn = new MySqlConnection(connString);
 
-            var repo = new DapperDepartmentRepository(conn);
 
-            var departments = repo.GetAllDepartments();//collection of iemunerable of type departments
+            var repo = new DapperProductRepository(conn);
 
-            foreach(var dept in departments)
+            repo.CreateProduct("NewStuff", 20, 1);
+
+            var products = repo.GetAllProducts();
+
+            foreach(var prod in products)
             {
-                Console.WriteLine($"{dept.DepartmentID} {dept.Name}");
+                Console.WriteLine($"{prod.ProductID} {prod.Name}");
             }
         }
 
